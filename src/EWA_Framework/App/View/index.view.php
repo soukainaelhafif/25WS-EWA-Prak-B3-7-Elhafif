@@ -58,8 +58,8 @@ $crud = ["Create – Insert new data", "Read – Fetch data", "Update – Modify
             </li>
         </ol>
         <h2>DebugHelper example</h2>
-        <p>Make sure to include <code>DebugHelper.php</code> with <code>require_once</code> before using it, then call <code>DebugHelper::dump($variable);</code> to output formatted debug info in any file you want.</p>
-        <?php DebugHelper::dump($data); ?>
+        <p>Make sure to include <code>DebugHelper.php</code> with <code>require_once</code> before using it, then call <code>dump($variable);</code> to output formatted debug info in any file you want.</p>
+        <?= dump($data) ?>
         <h2>Next steps</h2>
         <p><strong>Use this example as a starting point. Extend it with your own logic, style, views, models, controllers and features by following the same MVC pattern. Enjoy building your project!</strong></p>
     </section>
