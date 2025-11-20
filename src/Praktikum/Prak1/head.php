@@ -10,10 +10,10 @@
     <h1>🍕 Pizzaservice Darmstadt</h1>
     <nav>
       <a href="index.php">Start</a> |
-      <a href="bestellung.php">Bestellung</a> |
-      <a href="baecker.php">Bäcker</a> |
-      <a href="fahrer.php">Fahrer</a> |
-      <a href="kunde.php">Kunde</a>
+      <a href="order.php">Bestellung</a> |
+      <a href="baker.php">Bäcker</a> |
+      <a href="driver.php">Fahrer</a> |
+      <a href="customer.php">Kunde</a>
     </nav>
     <hr>
   </header>
