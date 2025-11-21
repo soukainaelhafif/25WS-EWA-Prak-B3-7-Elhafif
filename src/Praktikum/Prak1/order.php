@@ -9,10 +9,10 @@ require_once("head.php");
     <input type="text" id="name" name="name" required><br><br>
 
     <label for="pizza">Pizza:</label><br>
-    <select id="pizza" name="pizza">
-      <option>Margherita</option>
-      <option>Salami</option>
-      <option>Funghi</option>
+    <select id="pizza" name="pizza[]" multiple>
+      <option value= "Margherita">Margherita</option>
+      <option value= "Salami"> Salami</option>
+      <option value ="Funghi" > Funghi</option>
     </select><br><br>
 
     <input type="submit" value="Bestellen">
