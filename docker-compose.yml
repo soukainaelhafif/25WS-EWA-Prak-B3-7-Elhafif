@@ -7,7 +7,7 @@ services:
     environment:
       TZ: "Europe/Berlin"
     ports:
-      - 127.0.0.1:8080:80
+      - 80:80
     volumes:
       - ./src:/var/www/html
     networks:
