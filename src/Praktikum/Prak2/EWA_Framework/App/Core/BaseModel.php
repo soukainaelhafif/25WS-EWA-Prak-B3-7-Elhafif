@@ -50,10 +50,12 @@ abstract class BaseModel
         }
     }
 
+    
     public function getDb(): MySQLi
     {
         return $this->db;
     }
+    
 
 }
 
