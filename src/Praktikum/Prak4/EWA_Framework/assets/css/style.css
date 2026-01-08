@@ -1,0 +1,423 @@
+/* ===================== GLOBAL ===================== */
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: "Georgia", system-ui, Arial, sans-serif;
+    background: url("../images/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #222;
+}
+
+/* leichter Schleier über dem Hintergrund */
+body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: -1;
+}
+
+/* Inhalt unter der Topbar zentrieren */
+.container{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 24px 40px;
+}
+
+/* ===================== TOPBAR / NAV ===================== */
+
+.topbar{
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 56px;
+    background: rgba(10,10,10,0.96);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.7);
+    z-index: 10;
+}
+
+.topbar__inner{
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.brand{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.brand__logo{
+    font-size: 20px;
+}
+
+.brand__text{
+    font-size: 18px;
+}
+
+.nav{
+    display: flex;
+    gap: 8px;
+}
+
+.nav__link{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    color: #ddd;
+    text-decoration: none;
+    transition: background .15s, color .15s;
+}
+
+.nav__link:hover{
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+}
+
+.nav__link.is-active{
+    background: #ff9800;
+    color: #141414;
+    font-weight: 600;
+}
+
+/* Platz unter der Topbar */
+main.container{
+    padding-top: 88px;
+}
+
+/* ===================== GENERISCHE KARTEN (Übersicht / Kunde / Bäcker / Fahrer) ===================== */
+
+.page-card{
+    background: rgba(245,241,235,0.97);
+    color: #3b2716;
+    border-radius: 6px;
+    padding: 28px 40px 30px;
+    box-shadow: 0 14px 36px rgba(0,0,0,0.6);
+    border: 2px solid #3b3b3b;
+    margin: 0 auto 32px;
+}
+
+.page-card h1,
+.page-card h2,
+.page-card h3{
+    margin-top: 0;
+    font-family: "Times New Roman", serif;
+    letter-spacing: .12em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* ===================== BESTELLSEITE ===================== */
+
+.page-card--orderpage{
+    max-width: 960px;
+}
+
+/* Hauptüberschriften Speisekarte / Warenkorb */
+.page-title{
+    font-family: "Times New Roman", serif;
+    font-size: 26px;
+    letter-spacing: .18em;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+}
+
+.page-title--cart{
+    margin-top: 30px;
+}
+
+/* ===== Speisekarte: drei Pizzen nebeneinander ===== */
+
+.menu-row{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 24px 20px 30px;
+    border-top: 3px solid #333;
+    border-bottom: 3px solid #333;
+    background: rgba(255,255,255,0.9);
+}
+
+.pizza-card{
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    width: 260px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.pizza-card__img{
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 8px;
+}
+
+.pizza-card__name{
+    font-family: "Times New Roman", serif;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.pizza-card__price{
+    margin-top: 4px;
+    font-size: 14px;
+}
+
+/* Radio-Button unter dem Text */
+.pizza-card input[type="radio"]{
+    margin-top: 6px;
+}
+
+/* ===== Warenkorb-Box ===== */
+
+.cart-box{
+    margin-top: 16px;
+    padding: 26px 24px 24px;
+    background: rgba(255,255,255,0.9);
+    border-top: 3px solid #333;
+    border-bottom: 3px solid #333;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.cart__label{
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* Adresse-Eingabe */
+.cart__address{
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 0;
+    border: 1px solid #c7c7c7;
+    font-size: 14px;
+    background: #fdfdfd;
+    margin-bottom: 8px;
+    font-family: "Georgia", serif;
+}
+
+/* Textarea mit Pizzen */
+.cart__items{
+    width: 100%;
+    min-height: 140px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 0;
+    border: 1px solid #c7c7c7;
+    background: #fdfdfd;
+    resize: vertical;
+    font-family: "Georgia", serif;
+}
+
+/* Gesamtpreis-Zeile */
+.cart__total-row{
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.cart__total{
+    flex: 1;
+    padding: 6px 8px;
+    border-radius: 0;
+    border: 1px solid #c7c7c7;
+    background: #fdfdfd;
+    font-family: "Georgia", serif;
+}
+
+/* rechte Spalte: Anzahl + Buttons */
+.cart-right{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.cart__select{
+    padding: 8px 10px;
+    border-radius: 0;
+    border: 1px solid #c7c7c7;
+    background: #fdfdfd;
+    font-size: 14px;
+}
+
+/* ===== Buttons im Warenkorb ===== */
+
+.cart-btn{
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    cursor: pointer;
+    border-radius: 0;
+    font-family: "Georgia", serif;
+}
+
+/* dunkelgraue Buttons */
+.cart-btn--remove,
+.cart-btn--clear{
+    background: #333d46;
+    color: #f7f7f7;
+}
+
+.cart-btn--remove:hover,
+.cart-btn--clear:hover{
+    background: #485461;
+}
+
+/* grüner Bestellen-Button */
+.cart-btn--order{
+    background: #4caf50;
+    color: #fff;
+}
+
+.cart-btn--order:hover{
+    background: #45a049;
+}
+
+/* ===================== FORM-ELEMENTE GENERELL ===================== */
+
+textarea,
+select,
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"]{
+    font-family: inherit;
+}
+
+/* ===================== FOOTER ===================== */
+
+.footer{
+    margin-top: 12px;
+    color: #eee;
+    font-size: 12px;
+    text-align: center;
+}
+
+.container--footer{
+    padding-top: 0;
+}
+
+/* ===================== TABELLEN-AUSRICHTUNG (Kunde/Bäcker/Fahrer) ===================== */
+
+/* Tabelle etwas enger und mittig */
+.page-card table{
+    width: 92%;
+    margin: 10px auto 0;
+    border-collapse: collapse;
+    background: rgba(245,241,235,0.96);
+    color: #3b2716;
+    font-size: 14px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Kopfzeile */
+.page-card table thead{
+    background: rgba(255,255,255,0.95);
+}
+
+.page-card table th{
+    font-family: "Times New Roman", serif;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 8px;
+    border-bottom: 2px solid #444;
+}
+
+/* Tabellenzellen */
+.page-card table td{
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+/* Zebra-Streifen für bessere Lesbarkeit */
+.page-card table tbody tr:nth-child(odd) td{
+    background: rgba(255,255,255,0.92);
+}
+
+.page-card table tbody tr:nth-child(even) td{
+    background: rgba(250,245,238,0.95);
+}
+
+/* Spalte 1: Bestell-ID – schmal, zentriert */
+.page-card table th:nth-child(1),
+.page-card table td:nth-child(1){
+    width: 60px;
+    text-align: center;
+}
+
+/* Spalte 2: Pizzen – links, breiter */
+.page-card table th:nth-child(2),
+.page-card table td:nth-child(2){
+    text-align: left;
+    padding-left: 18px;
+    width: 40%;
+}
+
+/* Spalte 3: Anzahl – rechts */
+.page-card table th:nth-child(3),
+.page-card table td:nth-child(3){
+    text-align: right;
+    width: 80px;
+    padding-right: 18px;
+}
+
+/* Spalte 4: Gesamtpreis – rechts + kein Zeilenumbruch */
+.page-card table th:nth-child(4),
+.page-card table td:nth-child(4){
+    text-align: right;
+    width: 110px;
+    padding-right: 18px;
+    white-space: nowrap;
+}
+
+/* Spalte 5: Status – mittig */
+.page-card table th:nth-child(5),
+.page-card table td:nth-child(5){
+    text-align: center;
+}
+
+/* Hover-Effekt */
+.page-card table tbody tr:hover td{
+    background: rgba(255,255,255,0.99);
+}
+
+/* Deaktivierter Bestell-Button */
+.cart-btn--order:disabled {
+    background: #999 !important;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
