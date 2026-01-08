@@ -3,12 +3,11 @@ require_once __DIR__ . '/../Model/DriverModel.php';
 
 class DriverController extends BaseController
 {
-    protected ?DriverModel $driverModel = null;
 
     public function getData(): array
     {
-        $this->driverModel = $this->driverModel ?? new DriverModel();
-        return $this->driverModel->getDeliveries();
+        $model = new DriverModel();
+        return $model->getDeliveries();
     }
 
     public function processData(): void
@@ -17,19 +16,18 @@ class DriverController extends BaseController
             return;
         }
 
-        $this->driverModel = $this->driverModel ?? new DriverModel();
-
+        $model = new DriverModel();
         foreach ($_POST as $key => $value) {
             if (str_starts_with($key, 'status_')) {
                 $orderingId = (int)substr($key, 7);
                 $status     = (int)$value;
 
                 if ($status === 4 || $status === 5) {
-                    $this->driverModel->updateOrderStatus($orderingId, $status);
+                    $model->updateOrderStatus($orderingId, $status);
 
                     if ($status === 5) {
                         // Optional: komplett löschen
-                        $this->driverModel->deleteDelivered($orderingId);
+                        $model->deleteDelivered($orderingId);
                     }
                 }
             }

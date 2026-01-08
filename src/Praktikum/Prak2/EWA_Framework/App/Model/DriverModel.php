@@ -20,7 +20,7 @@ class DriverModel extends BaseModel
         ";
         $result = $this->db->query($sql);
         if (!$result) {
-            throw new Exception('DriverModel getDeliveries fehlgeschlagen: ' . $this->db->error);
+            throw new Exception('Fehler: ' . $this->db->error);
         }
         return $result->fetch_all(MYSQLI_ASSOC);
     }

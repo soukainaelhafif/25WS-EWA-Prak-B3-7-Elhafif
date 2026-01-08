@@ -3,25 +3,25 @@ require_once __DIR__ . '/../Model/CustomerModel.php';
 
 class CustomerController extends BaseController 
 {
-    protected ?CustomerModel $customerModel = null;
-
+     // 1 - Daten holen
     public function getData() : array
     {
-        $this->customerModel = $this->customerModel ?? new CustomerModel();
+        $orderingId = $_SESSION['last_ordering_id'] ?? null; 
 
-        $orderingId = $_SESSION['last_ordering_id'] ?? null;
-        if ($orderingId === null) {
-            return [];
-        }
+        if($orderingId === null) return [];
 
-        return $this->customerModel->getOrderByOrderingId((int)$orderingId);
+        $model = new CustomerModel();
+        
+        return $model->getOrderById($orderingId);
     }
 
+    // 2 - Formular verarbeiten
     public function processData() : void
     {
-        // Kunde ändert nichts per POST
+
     }
 
+    // 3 - Seite anzeigen
     public function generateResponse(array $data) : void
     {
         $viewData = [

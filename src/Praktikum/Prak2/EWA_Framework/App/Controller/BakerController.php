@@ -3,36 +3,38 @@ require_once __DIR__ . '/../Model/BakerModel.php';
 
 class BakerController extends BaseController
 {
-    protected ?BakerModel $bakerModel = null;
-
+    // 1 - Daten holen (READ)
     public function getData(): array
     {
-        $this->bakerModel = $this->bakerModel ?? new BakerModel();
-        return $this->bakerModel->getOpenPizzas();
+        $model = new BakerModel();
+        return $model->getOpenPizzas();
     }
 
+     // 2 - Formular verarbeiten (UPDATE)
     public function processData(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             return;
         }
 
-        $this->bakerModel = $this->bakerModel ?? new BakerModel();
+        $model = new BakerModel();
 
-        foreach ($_POST as $key => $value) {
-            if (str_starts_with($key, 'status_')) {
-                $id = (int)substr($key, 7);
+        // Alle Status-Änderungen durchgehen
+        foreach ($_POST as $key => $value){
+            // Suche nach "status_123" (123 = ordered_article_id)
+            if(str_starts_with($key , 'status_')){  
+                $id = (int)substr($key , 7);
                 $status = (int)$value;
-                if ($status === 2 || $status === 3) {
-                    $this->bakerModel->updateStatus($id, $status);
-                }
+                $model->update($id, $status);
             }
         }
 
+        // PRG Pattern
         header('Location: baker.php');
         exit;
     }
 
+    // 3 - Seite anzeigen
     public function generateResponse(array $data): void
     {
         $viewData = [
