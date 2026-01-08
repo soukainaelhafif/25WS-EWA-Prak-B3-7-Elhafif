@@ -3,6 +3,7 @@ require_once __DIR__ . '/../Core/BaseModel.php';
 
 class BakerModel extends BaseModel
 {
+    // READ - Alle offenen Pizzen holen (Status 1, 2, 3)
     public function getOpenPizzas(): array
     {
         $sql = "
@@ -20,12 +21,12 @@ class BakerModel extends BaseModel
         ";
         $result = $this->db->query($sql);
         if (!$result) {
-            throw new Exception('BakerModel getOpenPizzas fehlgeschlagen: ' . $this->db->error);
+            throw new Exception('Fehler: ' . $this->db->error);
         }
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function updateStatus(int $orderedArticleId, int $status): bool
+    public function update(int $orderedArticleId, int $status): bool
     {
         $stmt = $this->db->prepare("
             UPDATE ordered_article

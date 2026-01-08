@@ -4,14 +4,8 @@ require_once __DIR__ . '/../Core/BaseModel.php';
 
 class StatusApiModel extends BaseModel
 {
-    /**
-     * Liefert die Bestell- und Statusdaten für eine Bestellung.
-     * Wird vom API-Endpunkt als JSON zurückgegeben.
-     */
     public function getOrderData(int $orderingId): array
     {
-        $db = $this->getDb();
-
         $sql = "
             SELECT 
                 o.ordering_id,
@@ -27,22 +21,13 @@ class StatusApiModel extends BaseModel
             GROUP BY o.ordering_id
         ";
 
-        $stmt = $db->prepare($sql);
-        if (!$stmt) {
-            throw new Exception('Prepare fehlgeschlagen: ' . $db->error);
-        }
-
+        $stmt = $this->db->prepare($sql);
         $stmt->bind_param("i", $orderingId);
-        if (!$stmt->execute()) {
-            $error = $stmt->error;
-            $stmt->close();
-            throw new Exception('Ausführen fehlgeschlagen: ' . $error);
-        }
-
+        $stmt->execute();
         $result = $stmt->get_result();
         $rows   = $result->fetch_all(MYSQLI_ASSOC);
-
         $stmt->close();
+        
         return $rows;
     }
 }
