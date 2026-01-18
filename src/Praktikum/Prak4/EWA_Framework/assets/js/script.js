@@ -5,23 +5,41 @@ const cart = [];
 
 // 2 - Funktion: Warenkorb im HTML anzeigen
 function renderCart() {
-    const cartText = document.getElementById("cart_text");
+    const cartList = document.getElementById("cart_list");
     const cartTotal = document.getElementById("cart_total");
     const cartJson = document.getElementById("cart_json");
 
-    if (!cartText || !cartTotal) return;
+    if (!cartList || !cartTotal) return;
 
-    let text = "";
+    cartList.innerHTML = "";
     let total = 0;
 
-    cart.forEach(function(item) {
-        text += "+ 1x " + item.name + " - " + item.price.toFixed(2) + "€\n";
+    cart.forEach(function(item, index) {
+         const li = document.createElement("li");
+        li.className = "cart-item";
+        
+        // Text erstellen
+        const span = document.createElement("span");
+        span.textContent = "1x " + item.name + " - " + item.price.toFixed(2) + "€";
+        
+        // Löschen-Button für DIESES Item
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "X";
+        deleteBtn.className = "cart-item__delete";
+        deleteBtn.addEventListener("click", function() {
+            removeItem(index);
+        });
+        
+        // Zusammenbauen
+        li.appendChild(span);
+        li.appendChild(deleteBtn);
+        cartList.appendChild(li);
+        
         total += item.price;
     });
 
-    cartText.value = text;
-    cartTotal.value = total.toFixed(2).replace(".", ",") + "€";
-    
+        cartTotal.value = total.toFixed(2).replace(".", ",") + "€";
+
     // JSON speichern für Controller
     if (cartJson) {
         cartJson.value = JSON.stringify(cart);
@@ -32,9 +50,17 @@ function renderCart() {
 }
 
 // 3 - Letzte Pizza entfernen
-function removeLast() {
-    cart.pop();
+function removeItem(index) {
+    cart.splice(index, 1);
     renderCart();
+}
+
+// Letzte Pizza entfernen
+function removeLast() {
+    if (cart.length > 0) {
+        cart.pop();
+        renderCart();
+    }
 }
 
 // 4 - Alle Pizzen entfernen
