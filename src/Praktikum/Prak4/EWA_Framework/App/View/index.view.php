@@ -58,9 +58,7 @@ require __DIR__ . '/partials/head.php';
                 <label for="address" class="cart__label">Adresse eingeben</label>
                 <input type="text" id="address" name="address" class="cart__address" required>
 
-                <textarea id="cart_text"
-                          class="cart__items"
-                          readonly></textarea>
+                <ul id="cart_list" class="cart__items"></ul>
 
                 <div class="cart__total-row">
                     <span>Gesamtpreis:</span>
