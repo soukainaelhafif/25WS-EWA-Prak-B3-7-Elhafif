@@ -37,8 +37,8 @@ A pizza ordering web app — customers order, bakers prepare, drivers deliver. A
 > Requires [Docker](https://www.docker.com/) installed
 
 ```bash
-git clone https://github.com/soukainaelhafif/25WS-EWA-Prak-B3-7-Elhafif.git
-cd 25WS-EWA-Prak-B3-7-Elhafif
+git clone https://github.com/soukainaelhafif/pizza-service-webapp.git
+cd pizza-service-webapp
 docker compose up -d
 ```
 
@@ -91,8 +91,8 @@ Eine Pizza-Bestellapp — Kunden bestellen, Bäcker bereiten vor, Fahrer liefern
 > Docker muss installiert sein
 
 ```bash
-git clone https://github.com/soukainaelhafif/25WS-EWA-Prak-B3-7-Elhafif.git
-cd 25WS-EWA-Prak-B3-7-Elhafif
+git clone https://github.com/soukainaelhafif/pizza-service-webapp.git
+cd pizza-service-webapp
 docker compose up -d
 ```
 
