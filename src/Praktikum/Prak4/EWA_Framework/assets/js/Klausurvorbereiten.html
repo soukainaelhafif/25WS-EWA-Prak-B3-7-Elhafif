@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <!-- Zeichensatz -->
+    <meta charset="UTF-8">
+    <!-- Titel der Seite -->
+    <title>HTML Grundlagen Demo</title>
+    <!-- Darstellung auf mobilen Geräten -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Beschreibung für Suchmaschinen (SEO) -->
+    <meta name="description" content="Eine einfache statische Beispielseite mit HTML">
+    <!-- Autor (optional) -->
+    <meta name="author" content="Thomas Hofmann">
+    <!-- Open Graph (für Social Media Previews) -->
+    <meta property="og:title" content="HTML Demo">
+    <meta property="og:description" content="Eine einfache statische HTML-Demoseite.">
+    <meta property="og:type" content="website">
+</head>
+
+<body>
+    <header>
+        <h1>HTML Grundlagen – Demo Webseite</h1>
+    </header>
+    <hr>
+    <nav>
+        <ul>
+            <li><a href="#struktur">Struktur</a></li>
+            <li><a href="#links">Links</a></li>
+            <li><a href="#bilder">Bilder</a></li>
+            <li><a href="#formulare">Formulare</a></li>
+            <li><a href="#void">Void Tags</a></li>
+            <li><a href="#normal-tags">Normale Tags</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <main>
+        <section id="struktur">
+            <h2>Semantische HTML-Tags</h2>
+            <article>
+                <h3>Artikel Beispiel</h3>
+                <p>Dies ist ein Absatz innerhalb eines Artikels.</p>
+            </article>
+            <aside>
+                <p>Dies ist ein Hinweisbereich (aside).</p>
+            </aside>
+        </section>
+        <hr>
+        <section id="links">
+            <h2>Links (a-Tag)</h2>
+            <a href="https://example.com" title="Normaler Link">Normaler Link</a><br>
+            <a href="https://example.com" target="_blank" title="Neuer Tab">Neuer Tab</a><br>
+            <a href="#formulare" title="Interner Sprung">Interner Sprung</a>
+        </section>
+        <hr>
+        <section id="bilder">
+            <h2>Bilder (img-Tag)</h2>
+            <img src="dog.png" alt="Ein Hund" title="Ein Hund">
+        </section>
+        <hr>
+        <section id="formulare">
+            <h2>Formulare</h2>
+            <!-- GET-FORMULAR -->
+            <h3>GET</h3>
+            <form method="get" action="https://echo.hofmann-thomas.de">
+                <label for="get-name">Name:</label><br>
+                <input id="get-name" type="text" name="name" placeholder="Ihr Name">
+                <br><br>
+                <label for="get-age">Alter:</label><br>
+                <input id="get-age" type="number" name="alter">
+                <br><br>
+                <button type="submit">Absenden (GET)</button>
+                <input type="reset" value="Zurücksetzen">
+            </form>
+            <!-- POST-FORMULAR -->
+            <h3>POST</h3>
+            <form method="post" action="https://echo.hofmann-thomas.de">
+
+                <!-- Textarea -->
+                <label for="bio">Kurzbeschreibung:</label><br>
+                <textarea id="bio" name="beschreibung" rows="3" cols="30"
+                    placeholder="Etwas über sich selbst schreiben..."></textarea>
+                <br><br>
+
+                <!-- Select -->
+                <label for="farbe">Lieblingsfarbe:</label><br>
+                <select id="farbe" name="farbe">
+                    <option value="rot">Rot</option>
+                    <option value="blau">Blau</option>
+                    <option value="gruen">Grün</option>
+                </select>
+                <br><br>
+
+                <!-- Date -->
+                <label for="geburtstag">Geburtstag:</label><br>
+                <input id="geburtstag" type="date" name="geburtstag">
+                <br><br>
+
+                <!-- Number -->
+                <label for="anzahl">Anzahl Haustiere:</label><br>
+                <input id="anzahl" type="number" name="haustiere" min="0" max="10">
+                <br><br>
+
+                <!-- Radio -->
+                <p>Bevorzugtes Getränk:</p>
+                <input id="tee" type="radio" name="getraenk" value="tee">
+                <label for="tee">Tee</label><br>
+
+                <input id="kaffee" type="radio" name="getraenk" value="kaffee">
+                <label for="kaffee">Kaffee</label><br><br>
+
+                <!-- Checkbox -->
+                <p>Interessen:</p>
+                <input id="sport" type="checkbox" name="interessen[]" value="sport">
+                <label for="sport">Sport</label><br>
+
+                <input id="musik" type="checkbox" name="interessen[]" value="musik">
+                <label for="musik">Musik</label><br>
+
+                <input id="it" type="checkbox" name="interessen[]" value="it">
+                <label for="it">IT</label><br><br>
+
+                <!-- Buttons -->
+                <button type="submit">Absenden (POST)</button>
+                <input type="reset" value="Zurücksetzen">
+
+            </form>
+        </section>
+        <hr>
+        <section id="void">
+            <h2>Void Tags</h2>
+            <ul>
+                <li><code>&lt;br&gt;</code></li>
+                <li><code>&lt;hr&gt;</code></li>
+                <li><code>&lt;img&gt;</code></li>
+                <li><code>&lt;input&gt;</code></li>
+                <li><code>&lt;meta&gt;</code></li>
+                <li><code>&lt;link&gt;</code></li>
+                <li><code>&lt;source&gt;</code></li>
+                <li><code>&lt;track&gt;</code></li>
+                <li><code>&lt;area&gt;</code></li>
+                <li><code>&lt;col&gt;</code></li>
+                <li><code>&lt;embed&gt;</code></li>
+                <li><code>&lt;param&gt;</code></li>
+                <li><code>&lt;wbr&gt;</code></li>
+            </ul>
+        </section>
+        <hr>
+        <section id="normal-tags">
+            <h2>Normale Tags</h2>
+            <ul>
+                <!-- Grundstruktur -->
+                <li><code>&lt;html&gt; ... &lt;/html&gt;</code></li>
+                <li><code>&lt;head&gt; ... &lt;/head&gt;</code></li>
+                <li><code>&lt;body&gt; ... &lt;/body&gt;</code></li>
+
+                <!-- Semantische Struktur -->
+                <li><code>&lt;header&gt; ... &lt;/header&gt;</code></li>
+                <li><code>&lt;nav&gt; ... &lt;/nav&gt;</code></li>
+                <li><code>&lt;main&gt; ... &lt;/main&gt;</code></li>
+                <li><code>&lt;section&gt; ... &lt;/section&gt;</code></li>
+                <li><code>&lt;article&gt; ... &lt;/article&gt;</code></li>
+                <li><code>&lt;aside&gt; ... &lt;/aside&gt;</code></li>
+                <li><code>&lt;footer&gt; ... &lt;/footer&gt;</code></li>
+                <li><code>&lt;address&gt; ... &lt;/address&gt;</code></li>
+                <li><code>&lt;dialog&gt; ... &lt;/dialog&gt;</code></li>
+
+                <!-- Texte & Inline -->
+                <li><code>&lt;h1&gt; ... &lt;/h1&gt;</code></li>
+                <li><code>&lt;h2&gt; ... &lt;/h2&gt;</code></li>
+                <li><code>&lt;h3&gt; ... &lt;/h3&gt;</code></li>
+                <li><code>&lt;h4&gt; ... &lt;/h4&gt;</code></li>
+                <li><code>&lt;h5&gt; ... &lt;/h5&gt;</code></li>
+                <li><code>&lt;h6&gt; ... &lt;/h6&gt;</code></li>
+
+                <li><code>&lt;p&gt; ... &lt;/p&gt;</code></li>
+                <li><code>&lt;div&gt; ... &lt;/div&gt;</code></li>
+                <li><code>&lt;span&gt; ... &lt;/span&gt;</code></li>
+
+                <li><code>&lt;strong&gt; ... &lt;/strong&gt;</code></li>
+                <li><code>&lt;em&gt; ... &lt;/em&gt;</code></li>
+                <li><code>&lt;mark&gt; ... &lt;/mark&gt;</code></li>
+                <li><code>&lt;small&gt; ... &lt;/small&gt;</code></li>
+                <li><code>&lt;blockquote&gt; ... &lt;/blockquote&gt;</code></li>
+                <li><code>&lt;q&gt; ... &lt;/q&gt;</code></li>
+                <li><code>&lt;cite&gt; ... &lt;/cite&gt;</code></li>
+                <li><code>&lt;time&gt; ... &lt;/time&gt;</code></li>
+
+                <li><code>&lt;pre&gt; ... &lt;/pre&gt;</code></li>
+                <li><code>&lt;code&gt; ... &lt;/code&gt;</code></li>
+
+                <!-- Listen -->
+                <li><code>&lt;ul&gt; ... &lt;/ul&gt;</code></li>
+                <li><code>&lt;ol&gt; ... &lt;/ol&gt;</code></li>
+                <li><code>&lt;li&gt; ... &lt;/li&gt;</code></li>
+                <li><code>&lt;dl&gt; ... &lt;/dl&gt;</code></li>
+                <li><code>&lt;dt&gt; ... &lt;/dt&gt;</code></li>
+                <li><code>&lt;dd&gt; ... &lt;/dd&gt;</code></li>
+
+                <!-- Multimedia -->
+                <li><code>&lt;audio&gt; ... &lt;/audio&gt;</code></li>
+                <li><code>&lt;video&gt; ... &lt;/video&gt;</code></li>
+                <li><code>&lt;canvas&gt; ... &lt;/canvas&gt;</code></li>
+                <li><code>&lt;figure&gt; ... &lt;/figure&gt;</code></li>
+                <li><code>&lt;figcaption&gt; ... &lt;/figcaption&gt;</code></li>
+
+                <!-- Tabellen -->
+                <li><code>&lt;table&gt; ... &lt;/table&gt;</code></li>
+                <li><code>&lt;thead&gt; ... &lt;/thead&gt;</code></li>
+                <li><code>&lt;tbody&gt; ... &lt;/tbody&gt;</code></li>
+                <li><code>&lt;tfoot&gt; ... &lt;/tfoot&gt;</code></li>
+                <li><code>&lt;tr&gt; ... &lt;/tr&gt;</code></li>
+                <li><code>&lt;td&gt; ... &lt;/td&gt;</code></li>
+                <li><code>&lt;th&gt; ... &lt;/th&gt;</code></li>
+                <li><code>&lt;caption&gt; ... &lt;/caption&gt;</code></li>
+
+                <!-- Formulare -->
+                <li><code>&lt;label&gt; ... &lt;/label&gt;</code></li>
+                <li><code>&lt;form&gt; ... &lt;/form&gt;</code></li>
+                <li><code>&lt;button&gt; ... &lt;/button&gt;</code></li>
+                <li><code>&lt;textarea&gt; ... &lt;/textarea&gt;</code></li>
+                <li><code>&lt;select&gt; ... &lt;/select&gt;</code></li>
+                <li><code>&lt;option&gt; ... &lt;/option&gt;</code></li>
+
+                <!-- Moderne HTML5 Template-Tags -->
+                <li><code>&lt;template&gt; ... &lt;/template&gt;</code></li>
+                <li><code>&lt;slot&gt; ... &lt;/slot&gt;</code></li>
+            </ul>
+        </section>
+    </main>
+    <hr>
+    <footer>
+        <p>2025 Thomas Hofmann</p>
+    </footer>
+</body>
+
+</html>

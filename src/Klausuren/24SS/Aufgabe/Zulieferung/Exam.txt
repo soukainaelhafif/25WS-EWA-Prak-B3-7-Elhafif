@@ -1,9 +1,0 @@
-******* Beantworten Sie hier Aufgabe 4 als Text *********
-a) Frage & Antwort ohne Neuladen *********************
-
-
-
-
-
-
-b) Punktestand clientseitig und ohne Sessions **************

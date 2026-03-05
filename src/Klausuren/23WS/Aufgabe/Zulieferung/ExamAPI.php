@@ -1,2 +1,0 @@
-<?php
-// Aufgabe 2

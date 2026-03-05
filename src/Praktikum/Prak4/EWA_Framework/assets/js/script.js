@@ -11,8 +11,8 @@ function renderCart() {
 
     if (!cartList || !cartTotal) return;
 
-    cartList.innerHTML = "";
-    let total = 0;
+    cartList.innerHTML = ""; // Liste leeren
+    let total = 0;          // gesamtpreis startet bei 0
 
     cart.forEach(function(item, index) {
          const li = document.createElement("li");

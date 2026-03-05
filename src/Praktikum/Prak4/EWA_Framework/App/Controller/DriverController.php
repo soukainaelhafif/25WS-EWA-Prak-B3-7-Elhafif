@@ -17,6 +17,7 @@ class DriverController extends BaseController
         }
 
         $model = new DriverModel();
+        
         foreach ($_POST as $key => $value) {
             if (str_starts_with($key, 'status_')) {
                 $orderingId = (int)substr($key, 7);

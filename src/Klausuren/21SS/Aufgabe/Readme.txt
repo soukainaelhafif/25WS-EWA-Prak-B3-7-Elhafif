@@ -1,1 +1,0 @@
-Hier können Textaufgaben beantwortet werden!
